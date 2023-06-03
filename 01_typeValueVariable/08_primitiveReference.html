@@ -1,0 +1,30 @@
+<html>
+     <script>
+          //primitive
+          let a = 20;
+          let b = a;//copy value
+          console.log(b);
+          a = 30;
+          console.log(b);//immutable
+
+          //reference
+          let obj1 = {
+               name : "Nyan",
+               age : 20,
+          };
+          let obj2 = obj1;// copy reference
+          console.log(obj2);
+          obj1.gender = "Male";
+          console.log(obj2);// mutable
+
+          obj2 = {
+               name : "Min",
+               age : 20
+          };//change reference
+          console.log(obj2 , obj1);
+
+          let arr1 = [1,2];
+          let arr2 = [1,2];
+          console.log(arr1 == arr2);
+     </script>
+</html>
