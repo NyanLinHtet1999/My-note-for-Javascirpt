@@ -1,0 +1,18 @@
+<html>
+     <script>
+ 
+          console.log("2" == 2);//"2" => Number
+          console.log("1" == true);
+          let obj = {
+               valueOf : function(){
+                    return true;
+               }
+          };
+          console.log(obj == 3);
+          console.log(obj == "true");//obj => primitive => true => 1 == "true"
+          console.log(obj == true);//obj => primitive => true => 1 == true => 1 == 1
+          console.log(undefined == false);
+          console.log(null == false);  
+          console.log(null == undefined);     
+     </script>
+</html>

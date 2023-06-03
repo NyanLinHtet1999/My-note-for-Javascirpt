@@ -1,10 +1,23 @@
 <html>
      <script>
           const x = 2;
-          let y = 3;//cannot be redecleared and block scope
+          let y = 3;//cannot be redecleared in the same block and block scope
+          function test(){
+               let name = "Nyan";
+               if(true){
+                    let name = "Min";
+                    console.log(name);
+               };
+               second = "second is in global scope";//It enter global scope.
+               console.log(name);
+          }
+          test();
+          console.log(second);
+          console.log(window);
           var z = 4;
           var z = 7;//can be redecleared and function scope
           console.log(z);
+          
      </script>
 </html>
 

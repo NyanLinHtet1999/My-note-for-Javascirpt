@@ -1,0 +1,20 @@
+<html>
+     <script>
+          let o = {
+               x : 1,
+               y : {
+                    z : 2,
+               }
+          };
+          console.log(o.x, o.y.z);
+          let xValue = "x";//get value of x dynimically
+          console.log(o[xValue], o["y"]["z"]);
+
+          // conditional chainig
+          let a = { 
+               b : null,
+          };
+          console.log(a.b?.c);//return undefinded for b is null or undefined never read c
+          console.log(a['b']?.[c]);
+     </script>
+</html>

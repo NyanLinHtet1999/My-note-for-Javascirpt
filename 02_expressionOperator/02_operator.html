@@ -1,0 +1,38 @@
+<html>
+     <script>
+          let obj = {
+               name : "Nyan",
+               valueOf : function(){
+                    return 2;
+               }
+          };
+          delete obj.name;
+          console.log(obj, obj.name);
+
+          console.log(  2 ** 2 ** 3);
+          console.log( 1 + "2");
+          console.log("2" * 3);
+          console.log(+"Hello");
+          console.log(1 + true);
+          console.log(1 + 2);//addition is performed only when none of the operant is string
+          console.log(2 + obj);//change to primitive
+          console.log(2 + null);
+          console.log(2 + undefined);
+          let x = "3";
+          console.log(++x);//first change to number
+
+          console.log(11 < 3);
+          console.log("11" < "3");//alphabital comparison
+
+          let point = { x : 1, y : 2};
+          console.log("x" in point);
+          console.log("toString" in point);
+          console.log("Hello" in point);
+
+          let d = new Date();
+          console.log(d instanceof Object);
+          console.log(d instanceof Date);
+          console.log(d instanceof Array);
+
+     </script>
+</html>
