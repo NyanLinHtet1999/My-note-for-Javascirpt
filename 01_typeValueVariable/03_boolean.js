@@ -1,0 +1,12 @@
+/* falsy value
+undefined
+null
+0
+-0
+NaN
+"" 
+*/
+console.log(Boolean(undefined));
+console.log(!Boolean(null));
+console.log(null == undefined);
+console.log(null === undefined);
