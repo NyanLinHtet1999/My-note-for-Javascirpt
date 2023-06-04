@@ -1,0 +1,21 @@
+<html>
+     <script>
+          function div(a,b){
+               if(isNaN(a) || isNaN(b)){
+                    throw new Error("one of the operand is NaN");
+               }else {
+                    console.log(a / b);
+               }
+          }
+          try {
+               div(10 , NaN);
+          } 
+          catch (e) {
+               console.log("We got error " , e);
+          }
+          finally{//optional
+               console.log("Finally always run");
+          }
+          console.log("end of Program"); 
+     </script>
+</html>

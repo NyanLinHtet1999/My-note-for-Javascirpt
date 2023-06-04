@@ -1,0 +1,23 @@
+<html>
+     <script>
+          let arr = ["apple", "mango", "apple"];
+          let unique = new Set(arr);
+          console.log(unique);
+          for (const iterator of unique) {
+               console.log(iterator);
+          }
+          let arr2 = new Map([["student1","Nyan"],["student2","Lin"]]);
+          for (const [key, value] of arr2) {
+               console.log(key, value);
+          }
+          let  obj = {
+               name : "Nyan",
+               age : 24
+          };
+          
+          for (const key in obj) {//only for object
+               console.log(obj[key]);
+          }
+
+     </script>
+</html>

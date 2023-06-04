@@ -1,0 +1,18 @@
+<html>
+     <script>
+          function test(){
+               try {
+                    throw new Error("Testing")
+               } catch (error) {
+                    console.log(error);
+                    return 3;
+               } finally {
+                    console.log("Run finally");
+                    return 4;
+               }
+               return 5;
+          }
+          let x = test();
+          console.log(x);
+     </script>
+</html>

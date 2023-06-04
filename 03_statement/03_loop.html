@@ -1,0 +1,38 @@
+<html>
+     <script>
+          for (let i = 0; i < 5; i++) {
+               console.log("Hello for", i);
+          }
+          let i = 0;
+          while (i < 4) {
+               console.log("Hello while" , i);
+               i++;
+          }
+          let j = 0;
+          do {
+               console.log("Hello doWhile", j);
+               j++;
+          } while (j < 4);
+          //for of
+          let arr = ["Nyan", "Lin", "Htet"];
+          for (const a of arr) {//better use const 
+               // a += "Hello"; 
+               console.log(a);
+          }
+          console.log(arr);//not change original array , used for read only
+          let obj = {
+               name : "Nyan",
+               age : 24
+          };
+          for (const iterator of Object.keys(obj)) {
+               console.log(iterator);
+          }
+          for (const iterator of Object.values(obj)) {
+               console.log(iterator);
+          }
+          for (const [key, value] of Object.entries(obj)) {
+               console.log(key , value);
+          }
+          console.log(Object.entries(obj));
+     </script>
+</html>

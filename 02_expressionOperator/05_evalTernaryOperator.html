@@ -1,0 +1,20 @@
+<html>
+     <script>
+          let str = "console.log('Hello world', 2 + 3)";
+          eval(str);
+          let num = false ? "yes this is true" : "no this is false";
+          console.log(num);
+
+          let maxwidth = 0;
+          let preferences = {
+               maxwidth : "",
+          };
+          let max = maxwidth || preferences.maxwidth || 500;//will not work for all falsy value
+          console.log(max);
+          let max1 = maxwidth ?? preferences.maxwidth ?? 400;//only null or undefined
+          console.log(max1);
+
+          console.log(typeof null);//object by mistake
+          console.log(typeof NaN);
+     </script>
+</html>
