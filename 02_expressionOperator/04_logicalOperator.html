@@ -1,0 +1,29 @@
+<html>
+     <script>
+          console.log(true && "true");//return second operand and short circuit
+          console.log(true && true);
+          console.log(null && true);
+
+          console.log(true || "true");
+          console.log(null || true);
+          console.log({} || false);
+
+          let raining = true;
+          console.log(raining && "take umbrella");
+
+          function getFalse(){
+               return false;
+          }
+          function getTrue(){
+               return true;
+          }
+          console.log(getTrue() || getFalse());
+          console.log(getTrue() | getFalse());// 1 or 0 and run both operand
+
+          let i = j = k = 0;
+          console.log(i, j , k); 
+          let a = 10;
+          a += 5 + 2;
+          console.log(a);
+     </script>
+</html>
