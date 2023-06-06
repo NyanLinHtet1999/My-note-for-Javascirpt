@@ -1,0 +1,13 @@
+<html>
+     <script>
+          let parent = {
+              data : 200,
+              method : function(){
+               console.log("parent method is called");
+              } 
+          };
+          let child = Object.create(parent);
+          child.method();//prototype based inheritance
+          child.unknown?.something();
+     </script>
+</html>

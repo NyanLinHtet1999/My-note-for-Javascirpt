@@ -1,0 +1,44 @@
+<html>
+     <script>
+          let obj = { //object literal
+               name : "Nyan"
+          };
+          console.log(obj);//has parent prototype
+          console.log(obj.toString());//get toString from parent prototype
+
+
+          //creation with new mostly class based
+          let obj2 = new Object();//constructor
+          console.log(obj2);//only have prototype
+
+          let obj3 = Object.create({
+               x : 3,//become parent object
+          });
+          console.log(obj3);
+          console.log(obj3.x);
+          obj3.x = 2;//own property
+          console.log(obj3);
+
+
+          let obj4 = Object.create(null);
+          console.log(obj4);
+
+
+          let parent = {
+               x : 500,
+               item : []
+          };
+          let obj5 = Object.create(parent);
+          console.log(obj5);
+          obj5.x = 600;//write
+          console.log(parent.x);
+          let obj6 = Object.create(parent);
+          obj5.item.push(1);//read and push
+          obj5.item.push(2);//read and push
+          console.log(parent.item);
+     
+
+
+
+     </script>
+</html>
