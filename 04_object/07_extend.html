@@ -1,0 +1,28 @@
+<html>
+     <script>
+          let target = {
+               x  : 1,
+               y : 2
+          };
+          let source = {
+               x : 3,
+               z : 10
+          };
+          for (const key of Object.keys(source)) {
+               target[key] = source[key];
+          };
+          console.log(target);
+          console.log(source);
+          let a = {
+               x : 1,
+               y : 2
+          };
+          let b = {
+               x : 3,
+               z : 4
+          };
+          let c = Object.assign(a , b , {str : "Hello"});//assign into the first one
+          console.log(a);//the same with c
+          console.log(c);
+     </script>
+</html>

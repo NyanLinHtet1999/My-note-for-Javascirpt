@@ -1,0 +1,23 @@
+<html>
+     <script>
+          let a = {
+               x : 1,
+               y : 2,
+               method : function (){
+                    console.log("Hello");
+               }
+          };
+          let str = JSON.stringify(a);
+          console.log(str);   
+          let clone = JSON.parse(str);
+          console.log(clone);
+          console.log(a);
+          console.log(a == clone);//deep clone change reference
+          Object.assign(clone, a);
+          console.log(clone);
+          console.log(a);
+          console.log(a == clone);//deep clone change reference and include method
+
+
+     </script>
+</html>

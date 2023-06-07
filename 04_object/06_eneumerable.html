@@ -1,0 +1,22 @@
+<html>
+     <script>
+          let parent = {
+               name : "Nyan",
+               age : 23,
+          };
+          
+          let child = Object.create(parent);
+          child.education = "bachelor";
+          console.log(child);
+          for (const key in child) {
+               // if (Object.hasOwnProperty.call(child, key)) {
+                    console.log(child[key]);
+               // }
+          }
+          console.log(child);
+          console.log("toString" in child);
+          console.log(child.hasOwnProperty("education"));
+          console.log(child.propertyIsEnumerable("education"));
+          console.log(child.propertyIsEnumerable("toString"));
+     </script>
+</html>

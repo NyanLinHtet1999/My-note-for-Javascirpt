@@ -1,0 +1,20 @@
+<html>
+     <script>
+          let obj = {
+               __balance : 10,
+               get balance (){
+                    console.log("Getter");
+                    console.log(this.__balance);
+               },
+               set balance(val){
+                    console.log("Setter");
+                    this.__balance = val;
+               }
+
+          }
+          obj.balance;
+          obj.balance = 30;
+          obj.balance;
+          console.log(obj.__balance);
+     </script>
+</html>

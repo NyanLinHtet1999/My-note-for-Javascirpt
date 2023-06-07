@@ -1,0 +1,17 @@
+<html>
+     <script>
+          let parent = {
+               x : 200,
+          }
+          let child = Object.create(parent);
+          child.y = 300;
+          console.log(child);
+          console.log(child.hasOwnProperty("x"));
+          console.log(child.hasOwnProperty("y"));
+          console.log("y" in child);
+          console.log("x" in child);
+          delete child.y;
+          console.log(child);
+
+     </script>
+</html>
