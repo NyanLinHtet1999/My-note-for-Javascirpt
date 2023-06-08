@@ -1,0 +1,40 @@
+<html>
+     <script>
+           let obj = [
+               {
+                    name : "Nyan",
+                    age  : 21,
+                    gender : "male"
+               },
+               {
+                    name : "Lin",
+                    age  : 34,
+                    gender : "male",
+               },
+               {
+                    name : "Htet",
+                    age  : 30,
+                    gender : "female"
+               },
+               {
+                    name : "Min",
+                    age  : 30,
+                    gender  : "male"
+               },
+
+          ];
+          let arr1 = obj.find(x => x.age == 30);//first element they find
+          console.log(arr1);
+          let index = obj.findIndex(x => x.age == 30);//first index it finds
+          console.log(index);
+          console.log(obj.every(x => x.age > 10));//if ever is true 
+          console.log(obj.some(x => x.age > 30));
+          let arr2 = [1,2,3, 4, 10, 8, 7];
+          console.log(arr2.reduce((a,b) => a + b, 10));
+          console.log(arr2.reduce((a,b) => a > b ? a : b));//max
+          console.log(arr2.reduce((a, b)=> a < b ? a : b));//min
+
+
+          
+     </script>
+</html>

@@ -1,0 +1,29 @@
+<html>
+     <script>
+          let arr = [1,2,3];
+          arr.forEach(x =>console.log(x + 2));
+          let arr2 = arr.map(x => x *3);
+          console.log(arr2);
+          let obj = [
+               {
+                    name : "Nyan",
+                    age  : 21
+               },
+               {
+                    name : "Lin",
+                    age  : 34
+               },
+               {
+                    name : "Htet",
+                    age  : 30
+               },
+
+          ];
+          let arr3 = obj.map(x => x.name);
+          console.log(arr3);
+          let arr4 = obj.filter(x => x.age > 29);
+          console.log(arr4);
+          let getName = obj.filter(x => x.age > 29).map(x => x.name);
+          console.log(getName);
+     </script>
+</html>

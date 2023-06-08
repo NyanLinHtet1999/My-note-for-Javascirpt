@@ -1,0 +1,50 @@
+<html>
+     <script>
+           let arr = [
+            {
+                name : 'Tk',
+                age : 38,
+                gender: 'male',
+            },
+            {
+                name : 'Hla Hla',
+                age : 22,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Aung',
+                age : 29,
+                gender: 'male',
+            },
+            {
+                name : 'Mya Mya',
+                age : 18,
+                gender: 'female',
+            },
+            {
+                name : 'Aung Min',
+                age : 3,
+                gender: 'male',
+            },
+        ];
+        //imperative
+        let group = {};
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr[i].gender);
+          if(group[arr[i].gender]){
+               group[arr[i].gender].push(arr[i]);
+          }else {
+               group[arr[i].gender] = [];
+               group[arr[i].gender].push(arr[i]);
+          }
+        }
+        console.log(group);
+
+        //fp reduce
+       let group1 = arr.reduce((group,obj) => {
+          return group[obj.gender] ? ( group[obj.gender].push(obj),group)
+                                 : ( group[obj.gender] =[obj],group);
+       },{});
+       console.log(group1);
+     </script>
+</html>
