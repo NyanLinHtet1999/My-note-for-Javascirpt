@@ -1,0 +1,31 @@
+<html>
+     <script>
+          function getUnique(){
+               getUnique.id++;
+               console.log(getUnique.id);
+          }
+          getUnique.id = 0;
+          getUnique();
+          getUnique();
+          getUnique();
+          getUnique();
+
+          function fact(n){
+               if(fact[n]){
+                    return fact[n];
+               }
+               console.log("fact is called");
+               let result = 1;
+               for (let i = n; i > 0; i--) {
+                    // console.log(i);
+                    result *= i; 
+               }
+               fact[n] = result;
+               return result;
+          }
+          console.log(fact(4));
+          console.log(fact(0));
+          console.log(fact(2));
+          console.log(fact(4));
+     </script>
+</html>

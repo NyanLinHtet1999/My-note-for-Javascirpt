@@ -1,0 +1,29 @@
+<html>
+     <script>
+          function test(){
+               console.log("test is called");
+          }
+          test();//function invocation
+          
+          let obj = {
+               x : 1,
+               test1 : function(){
+                    console.log("test1 is called" , this.x);
+               },
+               toString(){
+                    return 3;
+               }
+          };
+          obj.test1();//method invocation
+
+          function Human(name, age){
+               this.name = name;//return this as an object
+               this.age = age;
+               console.log("Constructor function is called");
+          }
+          let obj1 = new Human("Nyan", 23);//constructor invocation
+          console.log(obj1);
+
+          console.log(obj + 3);//indirect invocation toString method
+     </script>
+</html>

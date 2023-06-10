@@ -1,0 +1,41 @@
+<html>
+     <script>
+          function display(obj){
+               console.log(obj.name, obj.age)
+          };
+          let info = {
+               name : "Nyan",
+               age : 24
+          };
+          display(info);
+
+          function inc(x){//x = k pass by value
+               console.log(x);
+               x++;
+          }
+          let k = 10;
+          inc(k);
+          console.log(k);
+
+          function change (obj){//pass by reference as value so pass by value
+               console.log(obj.x);
+               obj.x++;
+          }
+          let obj = {
+               x : 2
+          };
+          change(obj);
+          console.log(obj.x);
+
+          let obj1 = {
+               x : 2
+          };
+          function change2(obj){//pass reference and change reference nothing happen
+               obj = {
+                    x : 5
+               }
+          }
+          change2(obj1);
+          console.log(obj1);
+     </script>
+</html>

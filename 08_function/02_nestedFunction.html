@@ -1,0 +1,12 @@
+<html>
+     <script>
+          function outer(){
+               console.log("Outer is called");
+               function inner(){
+                    console.log("Inner is called");
+               }
+               inner();
+          }
+          outer();
+     </script>
+</html>

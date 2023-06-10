@@ -1,0 +1,37 @@
+<html>
+     <script>
+          let arr = [1,2,3,[4,5]];
+          console.log(arr.flat());
+          let arr5 = [1,2,3,[4,[6],5], 6];
+          console.log(arr5.flat(2));
+
+          let arr2 = [1,2,3,4,5,6];
+          console.log(arr2.flatMap(x => [x, x *2]));
+          console.log(arr2.concat([7,8]));
+          console.log(arr2.slice(2));//index to index
+          console.log(arr2.slice(2,4));
+          console.log(arr2.slice(-2));//two form back to end
+          console.log(arr2.slice(-2, -1));//two from back to one form end
+
+          let month = ["Jan", "March", "April", "May"];
+          month.splice(1,0, "Feb", "Feb2");//start index , count to delete, insert element
+          console.log(month);//mutate array
+          month.splice(1, 2, "Feburary");
+          console.log(month);
+          let aprilIndex = month.indexOf("April");
+          month.splice(aprilIndex,1);
+          console.log(month);
+
+          let arr3 = new Array(5);
+          console.log(arr3);
+          arr3.fill("hello");//mutate array
+          console.log(arr3);
+
+          let arr4 = [1, 2, 3, 4, 5, 3,3];
+          console.log(arr4.indexOf(3,3))//start finding from 3
+          console.log(arr4.lastIndexOf(3));
+          console.log(arr4.includes(3));
+
+
+     </script>
+</html>

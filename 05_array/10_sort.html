@@ -1,0 +1,18 @@
+<html>
+     <script>
+          let arr = [1,2, 11, 100, 3, 3];
+          arr.sort();//mutate
+          console.log(arr);
+          arr.sort((a,b)=>a - b);//ascending
+          console.log(arr);
+          arr.sort((a ,b) => b-a); //descending
+          console.log(arr);
+          arr.reverse();
+          console.log(arr);
+          console.log(arr.join());//immutable
+          console.log(arr);
+
+          console.log(Array.isArray(arr));//static method
+
+     </script>
+</html>

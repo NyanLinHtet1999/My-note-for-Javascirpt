@@ -1,0 +1,19 @@
+<html>
+     <script>
+          function hello(){
+               console.log("Hello world");
+          }
+          let fun = hello;//1 can assign to variable
+          fun();
+          function higherOrder(fun){
+               fun();
+          }
+          higherOrder(hello);//2 can pass as an argument
+          function returnFunction(){
+               return function(){//3 can return function
+                    console.log("retun function is called");
+               }
+          }
+          returnFunction()();
+     </script>
+</html>

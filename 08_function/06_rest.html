@@ -1,0 +1,16 @@
+<html>
+     <script>
+          function max(a,...num){//rest parameter
+               console.log(a, num);
+               console.log(arguments);//array like obj
+          }
+          max(10, 20, 30, 40);
+          let arr = [1,2,3,4];//spread operator
+          max(...arr);
+
+          function display({name, age}){
+               console.log(name, age);
+          }
+          display({name : "Nyan", age :20});//object destructure
+     </script>
+</html>
