@@ -1,0 +1,24 @@
+<html>
+     <script>
+          let obj ={
+               name : "Nyan",
+               age : 21,
+               display  : function(msg){
+                    console.log(`Name ${this.name} age ${this.age}  ${msg}`);
+               }
+          };
+          let fun = obj.display;
+          fun();
+          fun.call(obj,"Hello");
+          let obj2 = {
+               name : "Lin",
+               age : 30
+          };
+          fun.call(obj2,"Hi");//borrowing or mixin
+          fun.apply(obj,["Hey"]);//take arguments as array
+          let fun2 = obj.display.bind(obj);
+          fun2("Hei");
+
+     </script>
+
+</html>

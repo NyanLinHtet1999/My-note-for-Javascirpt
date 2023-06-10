@@ -1,0 +1,21 @@
+<html>
+     <script>
+          function getUnique(){
+               let x = 0;
+               return function(){
+                    x++;
+                    return x;
+               }
+          }
+          let unique = getUnique();
+          console.log(unique());
+          console.log(unique());
+          console.log(unique());
+          console.log(unique());
+
+          let unique2 = getUnique();
+          console.log(unique2());
+          console.log(unique2());
+          console.log(unique2());
+     </script>
+</html>
