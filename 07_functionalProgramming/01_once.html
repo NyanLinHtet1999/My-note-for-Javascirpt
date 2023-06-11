@@ -1,0 +1,28 @@
+<html>
+     <script>
+          function payment(){
+               console.log("Payment is called");
+          }
+          function order(){
+               console.log("Order is called");
+          }
+          function once(fun){
+               let done = false;
+               return function(){
+                    if(!done){
+                         done = true;
+                         fun();
+                    }
+               }
+              
+          }
+          let payment1 = once(payment);
+          payment1();
+          payment1();
+
+          let order1 = once(order);
+          order1();
+          order1();
+          order1();
+     </script>
+</html>

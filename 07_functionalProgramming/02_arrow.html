@@ -1,0 +1,20 @@
+<html>
+     <script>
+          const add = (a, b) => a + b;
+          console.log(add(3,2));
+
+          const double = (x) => {
+               console.log(x);
+               return x * 2;
+          };
+          let result = double(3);
+          console.log(result);
+
+          let obj = {
+               name : "Nyan",
+               age : 23,
+               display : () => console.log(`Name ${this.name} Age ${this.age}`)//should not use as method
+          };
+          obj.display(); 
+     </script>
+</html>
