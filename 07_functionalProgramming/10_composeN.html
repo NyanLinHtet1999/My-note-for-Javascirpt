@@ -1,0 +1,51 @@
+<html>
+     <script>
+          const addOne = (x) => x + 1;
+          const double = (x) => x * 2;
+          const addFive = (x) => x + 5;
+          /*
+          function compose(...funs){
+               return function(x){
+                  return  funs.reduceRight((input,fn)=> {
+                         return fn(input);
+                    },x)
+               }
+          };
+          */
+         const composeN = (...funs) => (x) => funs.reduceRight((input, fn) => fn(input),x)
+          let result = composeN(addOne, double, addFive);
+          console.log(result(4));
+          const pipeN = (...funs) => (x) => funs.reduce((input, fn) => fn(input), x);
+          let result1 = pipeN(addOne, double , addFive);//point free style => don't need argument
+          console.log(result1(4));
+
+          let result2 = pipeN(pipeN(addOne,double) , addFive);//associativity
+          console.log(result2(4));
+
+          //tap 
+          function tap(fn){
+               return function(val){
+                    fn(val);
+                    return val;
+               }
+          }
+          let log = tap(console.log);
+          log("Hello test");
+
+          let result3 = pipeN(log, addOne , log , double, log , addFive, log);
+          console.log(result3(5));
+
+          function sum (x){//currying => multiple argument -> single
+               return function(y){
+                    return x + y;
+               }
+          }
+          console.log(sum(3)(4));
+
+          let result4 = pipeN(addOne,
+                               double,
+                               sum(3),//partial application
+                               addFive);
+          console.log(result4(10));
+     </script>
+</html>

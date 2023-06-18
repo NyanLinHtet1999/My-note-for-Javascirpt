@@ -1,0 +1,21 @@
+<html>
+     <script>
+          let arr = [2,2,3,3,3,4,3,2,4,5];
+          let group = {};
+          for (let i = 0; i < arr.length; i++) {
+               if(group[arr[i]]){
+                    group[arr[i]]++;
+               }else{
+                    group[arr[i]] = 1;
+               }
+               
+          }
+          console.log(group);
+          let groupArr = Object.entries(group);
+          console.log(groupArr);
+
+          let sortedGroptArr = groupArr.sort((a,b)=> b[1] - a[1]);
+          console.log(sortedGroptArr);
+          console.log(sortedGroptArr[0][0], sortedGroptArr[1][0])
+     </script>
+</html>

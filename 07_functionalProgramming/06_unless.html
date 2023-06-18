@@ -1,0 +1,27 @@
+<html>
+     <script>
+          const unless = (cond, fun) => {
+               if(!cond){
+                    fun();
+               }
+          }
+          let x = 9;
+          unless(x > 10, ()=> console.log("x is less than 10"));
+          function forEach(arr, fun){
+               for (let i = 0; i < arr.length; i++) {
+                   fun(arr[i]);
+               }
+          }
+          forEach([1,2,3,4,5],(x)=>{
+               console.log(x);
+               unless((x % 2), ()=> console.log( `${x} is even`));
+          });
+
+          let noOfLoop = (times, fun)=> {
+               for (let i = 0; i < times; i++) {
+                    fun(); 
+               }
+          };
+          noOfLoop(3,()=>console.log("Hello"));
+     </script>
+</html>

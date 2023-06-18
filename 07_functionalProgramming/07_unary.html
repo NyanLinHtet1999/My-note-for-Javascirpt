@@ -1,0 +1,17 @@
+<html>
+     <script>
+         let arr = ['1', '2', '3', '4'];
+          let number = arr.map(parseInt);
+          console.log(number);
+          
+          arr.map(function(a, b,c){//value, index, arr
+            console.log("a",a,"b", b,"c", c);
+          })
+
+          console.log(parseInt("11", 2));
+
+          const unary = (fn) => fn.length === 1 ? fn : (arg) => fn(arg);
+          let number3 = arr.map(unary(parseInt));
+          console.log(number3);
+     </script>
+</html>

@@ -1,0 +1,33 @@
+<html>
+     <script src="https://cdn.jsdelivr.net/npm/ramda@0.27.1/dist/ramda.min.js"></script>
+     <script>
+          let arr = [2,2,3,3,3,4,3,2,4,5];
+          let k = 2;
+          /*
+          let group = R.countBy(R.identity)(arr);
+          console.log(group);
+          let groupArr = Object.entries(group);
+          
+          let sortedArr =  R.sort((a,b) => b[1] - a[1] )(groupArr);   
+          console.log(sortedArr);
+          let sortedElement = R.map((x) => x[0])(sortedArr);
+          console.log(sortedElement);
+          let answer = R.take(k)(sortedElement);
+          console.log(answer);
+          */
+         const log = R.tap(console.log);
+         let answer = R.pipe(
+                         log,
+                         R.countBy(R.identity),
+                         log,
+                         Object.entries,
+                         log,
+                         R.sort((a,b) => b[1] - a[1] ),
+                         log,
+                         R.map((x) => x[0]),
+                         log,
+                         R.take(k),
+                         )(arr);
+          console.log(answer);
+     </script>
+</html>
