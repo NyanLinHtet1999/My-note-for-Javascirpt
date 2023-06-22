@@ -1,0 +1,30 @@
+<html>
+    
+     <script>
+
+
+          const fork = (join, fn1, fn2) => (value) => join(fn1(value), fn2(value));
+          const length = (array) => array.length
+          const sum = (array) => array.reduce((a, b) => a + b, 0);
+          const divide = (a, b) => a / b;
+          const arrAverage = fork(divide, sum, length);
+          console.log(arrAverage([2,3,4]));
+
+          const alt = (fn, orFn) => (value) => fn(value) || orFn(value);
+
+          const isEven = (x) => {
+          if(x % 2 === 0){
+            console.log("It is even");
+            return true;
+          }else{
+            return false;
+          }
+         };
+         const notEven = (x) =>console.log("It is not even");
+          const func = alt(isEven,notEven);
+          func(3);
+         func(2);
+         func(4);
+         func(5);
+     </script>
+</html>

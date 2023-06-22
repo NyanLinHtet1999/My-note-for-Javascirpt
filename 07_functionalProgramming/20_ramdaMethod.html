@@ -1,0 +1,43 @@
+<html>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js"></script>
+     <script>
+          let arr = [
+        {
+            name : 'TK',
+            gender :'male'
+        },
+        {
+            name : 'Hla Hla',
+            gender :'female'
+        },
+        {
+            name : 'Aung Aung',
+            gender :'male'
+        },
+        {
+            name : 'Mya Mya',
+            gender :'female'
+        },
+       ];
+       const byGender = R.groupBy( student=>student.gender);//groupBy
+       console.log(byGender(arr));
+
+       console.log(R.groupWith(R.equals, [0, 1, 1, 2, 3, 5, 8, 13, 21]));//groupWith
+
+       console.log(R.pair('First', 'Second'));//pair
+        console.log(R.head(['First', 'Second' , 'Third']));//head
+        console.log(R.tail(['First', 'Second', 'Third']));//tail
+        console.log(R.drop(1, ['foo', 'bar', 'baz']));//drop
+
+        //ifElse
+        const printEvenOrOdd = R.ifElse(
+            (x)=> x %2 == 0,
+            ()=>console.log('Even'),
+            ()=>console.log('Odd')
+        );
+        printEvenOrOdd(4);
+        printEvenOrOdd(5);
+
+        console.log('Pluck ',R.pluck('name')(arr));
+     </script>
+</html>

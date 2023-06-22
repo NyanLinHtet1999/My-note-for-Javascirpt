@@ -1,0 +1,22 @@
+<html>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.29.0/ramda.min.js"></script>
+     <script>
+          //flip
+       let formula = R.flip(R.divide)(2);
+       console.log('5/2 ',formula(5));
+       //apply
+       const nums = [1, 2, 3, -99, 42, 6, 7];
+       console.log(R.apply(Math.max)(nums)); //=> 42
+       console.log(R.prop('x')({x: 100}));
+       let obj = {
+        name : 'Tk',
+        age : 38,
+        address : {
+            city : 'Ygn',
+            township: 'Somewhere'
+        }
+       };
+       console.log(R.path(['address','city'])(obj));
+       console.log(R.pathOr("UnKnown",['address2' ,'city'])(obj));
+     </script>
+</html>
