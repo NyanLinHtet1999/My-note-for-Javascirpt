@@ -1,0 +1,25 @@
+<html>
+     <script>
+          const identity = (x) => x;
+          const compose = (funA, funB) => x => funA(funB(x));
+          const addOne = (x) => x + 1;
+          const double = (x) => x * 2;
+          const addTwo = (x) =>x + 2;
+          let newFun = compose(addOne, addTwo);
+          console.log(newFun(3));
+
+          var Composition = { empty :() => identity , concat : compose};
+
+          var fold = function(array, monoid){
+               var accumulation = monoid.empty();  
+               for (let i = 0; i < array.length; i++) {
+                const element = array[i];
+                accumulation = monoid.concat(accumulation, element) 
+            }
+            return accumulation;
+          }
+
+          let func = fold([addOne, double, addTwo], Composition);
+          console.log(func(3));
+     </script>
+</html>
