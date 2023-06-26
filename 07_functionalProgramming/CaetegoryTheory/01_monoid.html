@@ -1,12 +1,17 @@
 <html>
      <script>
+          /*
+          must have two function
+          (St, St) => St
+          f(g(x)) = (f.g)(x) Associativity
+          */
         var Sum = { empty: () => 0, concat: (x, y) => x + y }
         var Mult = { empty: () => 1, concat: (x, y) => x * y }
         var arraySum = [1, 2, 3, 4, 5, 6].reduce(Sum.concat, Sum.empty());//use array method
         console.log(arraySum);
 
         var fold = function (array,monoid) { 
-            var accumulation = monoid.empty();                      // abstracted 0
+            var accumulation = monoid.empty();// abstracted 0
             for (let i = 0; i < array.length; i++) {
                 const element = array[i];
                 accumulation = monoid.concat(accumulation, element) // abstracted +
@@ -15,7 +20,7 @@
         }
         let total = fold([10,20,30],Sum);
         console.log("Total ",total);
-        
+
         var Max = {
             empty:()=> -Infinity,
             concat:(x,y)=> x > y ?x : y

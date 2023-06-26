@@ -1,0 +1,31 @@
+<html>
+     <script>
+          const appendHi = (msg) => "Hi " + msg;
+          const toUpper = (msg) => msg.toUpperCase();
+
+          const MayBe = (value) => {
+               return {
+                    value, 
+                    isNothing()
+                    {
+                         return value === undefined || value === null;
+                    },
+                    map(fn)
+                    {
+                         return this.isNothing()? MayBe(null) : MayBe(fn(value));
+                    }
+               }
+          };
+
+          let str = "Hello";
+          let data = MayBe(str);
+          let result = data.map(appendHi)
+                            .map(toUpper);
+          console.log(result);
+
+          let str1 = null;
+          let data1 = MayBe(str1);
+          let result1 = data1.map(appendHi).map(toUpper);
+          console.log(result1);
+     </script>
+</html>

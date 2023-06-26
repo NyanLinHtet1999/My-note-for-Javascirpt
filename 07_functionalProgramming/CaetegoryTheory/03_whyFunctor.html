@@ -1,0 +1,36 @@
+<html>
+     <script>
+       const Container = (value) => {
+          return {
+               value,
+               map(fn) {
+                    return Container(fn(value));
+               }
+          }
+       };
+       let result = Container(2);
+       console.log(result);
+
+       const addOne = (x) => x + 1;
+       const double = (x) => x * 2;
+       const addTwo = (x) => x + 2;
+
+       let count = result.map(addOne)
+                         .map(double)
+                         .map(addTwo);
+       console.log(count);
+       console.log(result);
+
+       const pipe = (fnA, fnB) => value =>fnA(fnB(value));
+       const newFun = pipe(addOne, double);
+       const result1 = result.map(newFun);
+       console.log(result1);
+       const result2 = result.map(double)
+                              .map(addOne);
+       console.log(result2);
+       //functor rule compose or sequence must be the same
+       console.log(result1.value == result2.value);
+
+
+     </script>
+</html>
