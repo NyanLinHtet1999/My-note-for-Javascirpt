@@ -1,0 +1,50 @@
+<html>
+     <script>
+          //Railway Oriented Programming
+        //sad path    
+    const Left = (value)=>({
+        map(){
+            return Left(value);
+        },
+        val(){
+            return value;
+        },
+        matchWith(context)
+        {
+            return context.left(value);
+        }
+   });
+   let leftResult = Left(3);
+   console.log(leftResult.val());
+
+
+   const Right = (value) => {
+     return {
+          map(fn){
+               return Right(fn(value));
+          },
+          val() {
+               return value
+          },
+          matchWith(context){
+               return context.right(value);
+          }
+     }
+   }
+   let rightResult = Right(5);
+   console.log(rightResult.val());
+
+   let addOne = (x) => x + 1;
+   function div(a, b){
+     if(isNaN(a) || isNaN(b)){
+          return Left("A or B is NaN");
+     }else {
+          return Right(a/b);
+     }
+   }
+   let result = div(1, NaN).map(addOne).matchWith({right : (x) =>console.log("Success Case", x), left : (err) => console.log("This is error", err)});
+//    console.log(result);
+   
+
+     </script>
+</html>

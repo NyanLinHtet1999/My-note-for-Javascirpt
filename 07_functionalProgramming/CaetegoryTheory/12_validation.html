@@ -1,0 +1,73 @@
+<html>
+    <script>
+   
+   const Failure = (value)=>({
+        tag: 'Failure',
+        map(){
+            return Failure(value);
+        },
+        val(){
+            return value;
+        },
+        matchWith(context)
+        {
+            return context.failure(value);
+        },
+        and(another)
+        {
+            return another.matchWith({
+                success:(x)=> Failure(value),
+                failure:(x)=> Failure( value+',' +x)
+            });
+        }
+   });
+
+   const Sucess = (value)=>({
+        tag: 'Sucess',
+        val(){
+            return value;
+        },
+        map(fn){
+            return Sucess(fn(value));
+        },
+        matchWith(context)
+        {
+            return context.success(value);
+        },
+        and(another)
+        {
+            return another.matchWith({
+                success:(x)=> Sucess(x),
+                failure:(x)=> Failure(x)
+            });
+        }
+   });
+    let obj = {
+        name : 'Tk',
+        age : 38,
+        email : 'someone@gmail.com'
+    };
+    const notEmpty = (x)=> x!='';
+    
+    const isNameNotEmpty = (obj)=> notEmpty(obj.name)?
+                                            Sucess(obj)
+                                            :Failure('Name is empty');
+    const emailNotEmpty = (obj)=> notEmpty(obj.email) ?
+                                            Sucess(obj)
+                                            :Failure('Email is empty');
+
+    function validatorCombinator(...validators)
+    {
+        return function(obj)
+        {
+            return validators.reduce((previousResult,validator)=>{
+                let nextResult = validator(obj);
+                return previousResult.and(nextResult);
+            }, Sucess(obj));
+        }
+    }
+    const combinator = validatorCombinator(isNameNotEmpty,emailNotEmpty);
+    console.log(combinator(obj));
+  
+    </script>
+</html>

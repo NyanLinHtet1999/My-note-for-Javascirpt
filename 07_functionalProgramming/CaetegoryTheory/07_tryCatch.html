@@ -1,0 +1,22 @@
+<html>
+     <script>
+          function doAsync()
+          {
+               console.log("Function is called");
+               setTimeout(() => {
+                    console.log("Execute after 1 second");
+                    throw new Error("Something went wrong");
+               }, 1000);
+          }
+          try
+          {
+               doAsync();
+          }
+          catch(e)
+          {
+               console.log(e);
+               console.log("catch");
+          }
+          console.log("After called");
+     </script>
+</html>

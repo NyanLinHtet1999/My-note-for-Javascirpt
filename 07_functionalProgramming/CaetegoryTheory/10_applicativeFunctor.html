@@ -1,0 +1,25 @@
+<html>
+     <script>
+          const Container = (value)=>({
+            val(){
+                return value;
+            },
+            map(fn){
+                return Container(fn(value));
+            },
+            /*
+            Container'a -> func(another'value)
+            */
+            ap(another)
+            {
+                return another.map(value);
+            }
+    });
+    const add = x => y => x + y;
+    const addOne = x => x + 1;
+    let a = Container(4);
+    console.log(a.val());
+    let result = Container(3).map(add).ap(a).map(addOne);
+    console.log(result.val());     
+     </script>
+</html>
