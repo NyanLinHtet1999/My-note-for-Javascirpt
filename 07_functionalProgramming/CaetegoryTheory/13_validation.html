@@ -1,0 +1,56 @@
+<html>
+     <script>
+   const Failure = (value)=>({
+        tag: 'Failure',
+        map(){
+            return Failure(value);
+        },
+        flatMap(fn)
+        {
+            return Failure(value);
+        },
+        val(){
+            return value;
+        },
+      
+   });
+
+   const Sucess = (value)=>({
+        tag: 'Sucess',
+        val(){
+            return value;
+        },
+        map(fn){
+            return Sucess(fn(value));
+        },
+        flatMap(fn)
+        {
+            return fn(value);
+        },
+   });
+
+   const notEmpty = (x)=> x!='';
+   let obj = {
+        name : 'Nyan',
+        age : 38,
+        email : 'someonegmail.com'
+    };
+    const isNameNotEmpty = (obj)=> notEmpty(obj.name)?
+                                            Sucess(obj)
+                                            :Failure('Name is empty');
+    const emailNotEmpty = (obj)=> notEmpty(obj.email) ?
+                                            Sucess(obj)
+                                            :Failure('Email is empty');
+    const validEmail = (obj)=> obj.email.includes('@')
+                                            ?Sucess(obj)
+                                            :Failure('Invalid email');
+    const ageValidRange = (obj)=> obj.age >0 && obj.age < 100 
+                                            ?Sucess(obj)
+                                            :Failure('Invalid age');
+     let validationResult= Sucess(obj)
+                                .flatMap(isNameNotEmpty) 
+                                .flatMap(validEmail);
+    console.log(validationResult.val());
+
+     </script>
+</html>

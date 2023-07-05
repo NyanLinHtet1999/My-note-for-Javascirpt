@@ -1,0 +1,52 @@
+<html>
+     <script>
+     let obj = {
+          name : "Nyan",
+          age : 28,
+          work()
+          {
+               console.log("Name ", this.name, " work");
+          },
+          display()
+          {
+               console.log("Name ", this.name , " work");
+          }
+     };
+     obj.display();
+
+     class Human 
+     {
+          constructor (name, age){
+               this.name = name;
+               this.age = age;
+               console.log("Human constructor");
+          }
+          work(){
+               console.log("Name ", this.name , " work");
+          }
+          display(){
+               console.log("Name " , this.name, " Age ", this.age);
+          }
+     }
+     let obj1 = new Human("Min", 20);
+     let obj2 = new Human("Aung" , 35);
+     console.log(obj1);
+     console.log(obj2);
+
+     obj1.work();
+     obj2.work();
+
+     class Teacher extends Human
+        {
+            constructor(name,age,school)
+            {
+                super(name,age);
+                this.school = school;
+            }
+        }
+        let teacher1 = new Teacher('Saya U Maung Maung',45,'YTU');
+        teacher1.work();
+
+
+     </script>
+</html>

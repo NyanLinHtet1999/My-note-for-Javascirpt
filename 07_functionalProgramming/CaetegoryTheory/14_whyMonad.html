@@ -1,0 +1,29 @@
+<html>
+     <script>
+    const Container = (value)=>({
+            val(){
+                return value;
+            },
+            map(fn){
+                return Container(fn(value));
+            },
+            join()
+            {
+                return value;
+            },
+            flatMap(fn)
+            {
+                //return this.map(fn).join();
+                return fn(value);
+            },
+    });          
+
+
+    let normalAddOne = x =>  x + 1;
+    let mondaicDouble = x => Container(x * 2);
+    let normalDouble = x =>x * 2;
+    let counter = Container(3).map(normalDouble).flatMap(mondaicDouble).map(normalAddOne);
+    console.log(counter.val());
+
+     </script>
+</html>

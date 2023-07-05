@@ -1,0 +1,25 @@
+<html>
+     <script>
+     class Stack
+     {
+          constructor()
+          {
+               this.items = [];
+          }
+          push(element)
+          {
+               this.items.push(element);
+          }
+          pop()
+          {
+               return this.items.pop();
+          }
+     }
+
+     let s1 = new Stack();
+     s1.push("one");
+     s1.push("two");
+     console.log("S1 ",s1.pop());
+
+     </script>
+</html>

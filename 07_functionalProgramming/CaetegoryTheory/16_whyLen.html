@@ -1,0 +1,31 @@
+<html>
+     <script src="https://cdn.jsdelivr.net/npm/ramda@0.27.1/dist/ramda.min.js"></script>
+     <script>
+      let obj = {
+            name : "Tk",
+            age : 23,
+            score : -30,
+            
+            address: {
+                city: "Yangon",
+            }
+        };
+        let another = {
+            ... obj,
+            age: obj.age + 1,
+            address : {
+                city : "Kalaw",
+                state : 'Shan'
+            }
+        };
+        console.log(another);
+        console.log( R.prop("age")(obj));
+        
+        //setter without lens it can't compose
+        let anotherClone = R.assoc('age',20,obj);
+        console.log(anotherClone);
+        anotherClone = R.assocPath(['address','city'],'Somewhere',obj);
+        console.log(anotherClone);
+        console.log('Object ',R.path(['address','city'],obj));
+     </script>
+</html>
