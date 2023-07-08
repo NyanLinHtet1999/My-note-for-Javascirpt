@@ -1,0 +1,43 @@
+<html>
+     <script>
+     
+      class Circle
+      {
+          constructor(radius)
+          {
+               this.radius = radius;
+          }
+          get area()
+          {
+               console.log(Math.PI * this.radius * this.radius);
+          }
+      }
+      let circle  = new Circle(3);
+      circle.area;
+
+      class Human 
+      {
+          #_age;
+          constructor(name, age)
+          {
+               this.name = name;
+               this._age = age;
+          }
+          set age(newAge){
+               this._age = newAge;
+          }
+          get age()
+          {
+               console.log(this._age);
+          }
+      }
+
+      let human = new Human("U Mya", 65);
+      human.age;
+      human.age = 30;
+      human.age;
+      console.log(human._age);//just set private it didn't work
+      
+
+     </script>
+</html>

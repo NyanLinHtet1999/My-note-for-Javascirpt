@@ -1,0 +1,35 @@
+<html>
+     <script>
+     
+     class Shape
+     {
+          constructor()
+          {
+               console.log("Shape constructor")
+          }
+          draw()
+          {
+               console.log('Shape draw');
+          }
+     }
+
+     class Circle
+     {
+          constructor()
+          {
+               this.shape = new Shape();
+          }
+
+          draw()
+          {
+               console.log("Circle draw");
+          }
+     }
+
+     let circle = new Circle();
+     console.log(circle);
+     circle.shape.draw();
+     circle.draw();
+
+     </script>
+</html>

@@ -1,0 +1,39 @@
+<html>
+     <script>
+          class Shape
+          {
+               constructor()
+               {
+                    console.log("Shape constructor");
+               }
+               draw()
+               {
+                    console.log("Shape draw");
+               }
+          }
+          let shape = new Shape();
+          shape.draw();
+
+          class Circle extends Shape
+          {
+               constructor()
+               {
+                    super();
+                    console.log("Circle constructor");
+               }
+               draw()
+               {
+                    super.draw();
+                    console.log("Circle draw");
+                    this.anotherMethod();
+               }
+               anotherMethod()
+               {
+                    console.log("Anoter Method is called");
+               }
+          }
+          let circle = new Circle();
+          circle.draw();
+          
+     </script>
+</html>

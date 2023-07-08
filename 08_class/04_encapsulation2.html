@@ -1,0 +1,39 @@
+<html>
+     <script>
+          class BankAccount
+          {
+               constructor()
+               {
+                    this.balance = 0;
+               }
+               credit(amount)
+               {
+                    if(amount >= 0){
+                         this.balance += amount;
+                    }
+               }
+               debit(amount)
+               {
+                    if(this.balance >= amount && amount > 0)
+                    {
+                         this.balance -= amount;
+                    }
+               }
+               toString()
+               {
+                    return "Account["+this.balance+"]";
+               }
+          }
+
+          let obj = new BankAccount();
+          obj.credit(-20);
+          console.log(obj.balance);
+          obj.credit(100);
+          obj.debit(50);
+          console.log(obj + "");
+
+
+
+
+     </script>
+</html>
