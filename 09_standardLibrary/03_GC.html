@@ -1,0 +1,19 @@
+<html>
+     <body>
+          <button id ="btnAllocate">Allocate</button>
+          <button id = "btnAssingNull">Assign Null</button>
+     </body>
+     <script>
+          let arr = [];
+          let another;
+          document.getElementById("btnAllocate").addEventListener("click", ()=>
+          {
+               for(let i = 0;i < 10;i++){
+                    arr.push(new Array(100_000))
+               }
+          });
+          document.getElementById("btnAssingNull").addEventListener("click", ()=> {
+               arr =null;
+          })
+     </script>
+</html>

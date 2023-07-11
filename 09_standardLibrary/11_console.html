@@ -1,0 +1,54 @@
+<html>
+     <script>
+          let arr = [
+               {
+                    name : "One",
+                    value : 1,
+               },
+               {
+                    name : "Two",
+                    value : 2
+               }
+          ];
+          console.time("timeLog");
+          console.timeLog("timeLog");
+          console.timeEnd("timeLog");
+          console.log(arr);
+          arr[0].value = 4;
+          console.log(arr);
+          console.debug("debug");
+          console.info("Info");
+          console.warn("Warn");
+          console.error("Error");
+
+          function div(a, b)
+          {
+               console.assert(!(isNaN(a) || isNaN(b)), "A or B is NaN");
+              console.log(a /b);
+          }
+          div(NaN, 10);
+          div(3, 2);
+
+          console.table(["apple", "oranges", "bananas"]);
+
+          console.group();
+          console.log("Level 1");
+          console.group();
+          console.log("Level 2");
+          console.groupEnd();
+          
+          function one()
+          {
+               function two()
+               {
+                    console.log("Two");
+                    console.trace();
+               }
+               two();
+          }
+          one();
+
+
+
+     </script>
+</html>

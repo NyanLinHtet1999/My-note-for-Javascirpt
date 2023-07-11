@@ -1,0 +1,25 @@
+<html>
+     <script>
+          let date = new Date();
+          console.log(date);
+
+          date = new Date(2023, 5, 3, 6, 30);
+          console.log(date);
+
+          let milisecond = date.getTime();
+          console.log(milisecond);
+
+          date = new Date(1685750400000);
+          console.log(date);
+
+          let json = {
+               date : date.getTime()
+          };
+          console.log(JSON.stringify(json));
+          console.log(date.getFullYear());
+          console.log(date.getMonth());
+
+          console.log(date.getDate());
+          console.log(date.getDay());
+     </script>
+</html>
