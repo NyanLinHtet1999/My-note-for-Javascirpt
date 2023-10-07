@@ -1,6 +1,7 @@
 <html>
      <script>
           function display(mes, another){
+               console.log(display.length , arguments.length);
                if(display.length != arguments.length){
                     console.warn(`Only ${arguments.length} supplied but ${display.length} requires`);
                }

@@ -1,9 +1,12 @@
 <html>
      <script>
           /*
-          must have two function
+          must have two function and same output type
           (St, St) => St
           f(g(x)) = (f.g)(x) Associativity
+          must have identity element to operate with left one like 1, 0, ""
+          can use parallel programming
+          reduce is fold but don't use in fp as it is array method
           */
         var Sum = { empty: () => 0, concat: (x, y) => x + y }
         var Mult = { empty: () => 1, concat: (x, y) => x * y }

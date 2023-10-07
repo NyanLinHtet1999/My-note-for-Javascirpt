@@ -1,5 +1,6 @@
 <html>
      <script>
+          //monoid contain map is called functor 
        const Container = (value) => {
           return {
                value,
@@ -28,9 +29,9 @@
        const result2 = result.map(double)
                               .map(addOne);
        console.log(result2);
-       //functor rule compose or sequence must be the same
+       //functor rule 1 adding identity function must be same with result
+       //functor rule 2 compose or sequence must be the same
        console.log(result1.value == result2.value);
-
 
      </script>
 </html>
