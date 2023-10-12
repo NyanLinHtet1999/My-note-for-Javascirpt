@@ -27,41 +27,5 @@
           let data1 = MayBe(str1);
           let result1 = data1.map(appendHi).map(toUpper);
           console.log(result1);
-
-
-          
-          let employees = {
-            data :{
-                1: {
-                    name : 'Mg Aung',
-                    age : 23
-                },
-                2:{
-                    name : 'Aung Min',
-                    age : 39
-                },
-                3: {
-                    name : "Mya Mya",
-                    age : 30,
-                    supervisor:2
-                },
-                4:{
-                    name : "Hla Hla",
-                    age : 30,
-                    supervisor:1
-                }
-            }
-        };
-
-        const getEmployeeById = (empId)=> employees.data[empId];
-        const getSupervisor = (employee)=>  employees.data[employee.supervisor];
-        const getName = (employee)=> employee.name;
-
-        let empId = 1;
-        const result2 = MayBe(empId)
-                            .map(getEmployeeById)  
-                            .map(getSupervisor)
-                            .map(getName);
-        console.log('Result ',result2.value);
      </script>
 </html>

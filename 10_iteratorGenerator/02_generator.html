@@ -1,0 +1,45 @@
+<html>
+     <script>
+          function* getGenerator(){
+               console.log("First step");
+               yield 1;
+               console.log("Second step");
+               yield 2;
+               console.log("Third step");
+               yield 3;
+          }
+          let gen = getGenerator();
+          console.log(gen.next());
+          console.log(gen.next());
+          console.log(gen.next());
+
+
+          function* oneAndDone() 
+        { 
+            yield 1;
+            return "done";
+            yield 2;
+        }
+        for(let i of oneAndDone())
+        {
+            console.log('I ',i);
+        }
+        let gen1 = oneAndDone();
+        console.log('Gen ',gen1.next());
+        console.log('Gen ',gen1.next());
+        console.log('Gen ',gen1.next());
+
+        function *smallNumber()
+        {
+            console.log('First');
+            let y1 = yield 1;
+            console.log('Second ',y1);
+            let y2 = yield 2;
+            console.log('Thrid ',y2);
+        }
+        gen2 = smallNumber();
+        console.log('Next ', gen2.next('Hello'));
+        console.log('Next ', gen2.next('World'));
+        console.log('Next ', gen2.next('Hi'));
+     </script>
+</html>
