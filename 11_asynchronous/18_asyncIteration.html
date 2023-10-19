@@ -1,0 +1,17 @@
+<html>
+     <script>
+            async function getDataParallel()
+       {
+            console.log('get data started');
+            let urls = ['https://jsonplaceholder.typicode.com/todos/1',
+                        'https://jsonplaceholder.typicode.com/todos/2'];
+            let promises = urls.map(url=> fetch(url).then(resp=>resp.json()))
+            for await(const response of promises)
+            {
+                console.log('Response ',response);
+            } 
+       }
+       getDataParallel();
+       console.log('End');
+     </script>
+</html>

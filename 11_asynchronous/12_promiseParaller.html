@@ -1,0 +1,15 @@
+<html>
+    <script>
+        console.time('log');
+        let urls = ['https://jsonplaceholder.typicode.com/todos/1',
+                    'https://jsonplaceholder.typicode.com/todos/2'];
+        let promises = urls.map(url=>fetch(url)
+                                    .then(resp=>resp.json())
+                                    );
+        Promise.all(promises)
+                .then(data=>{
+                    console.timeLog('log');
+                    console.log('Data ',data);
+                })
+    </script>
+</html>

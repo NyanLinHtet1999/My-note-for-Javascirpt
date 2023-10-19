@@ -1,0 +1,20 @@
+<html>
+    <script>
+      let name = localStorage.username;
+      if(!name)
+      {
+         name = prompt('Enter name');
+         localStorage.username = name; 
+      }
+      let obj = {
+        name : "TK",
+        age : 38,
+      };
+      localStorage.user = JSON.stringify(obj);
+      window.addEventListener('storage',(event)=>{
+        console.log('Stroage event ',event);
+      });
+      //check with 16_anotherStorage.html
+    </script>
+    
+</html>

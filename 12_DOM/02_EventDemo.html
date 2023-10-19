@@ -1,0 +1,53 @@
+<html>
+     <head>
+          <style>
+          #container{
+               width:100;
+               height:100;
+               background-color: gray;
+           }
+           #outer{
+               border: 2px solid red;
+           }
+          </style>
+     </head>
+     <body>
+          Hello
+          <div id="outer">
+               <h1> Outer</h1>
+               <div id="container">
+                   Container
+               </div>
+               <button type="button" onclick="alert('Hello')">Click me</button>
+               <!-- don't use onclick  -->
+          </div>
+     </body>
+     <script>
+          window.onload = ()=>{
+            console.log('Window onloaded');
+          };//never user onload
+          window.onload = ()=>{
+            console.log('Window onloaded2');
+          };
+
+          window.addEventListener("load",()=>{
+            console.log('Window loaded');
+          });
+
+          document.addEventListener("click",(event)=>{
+               console.log('Document click ',event);
+          });
+
+          document.addEventListener("click",(event)=>{
+               console.log('Document click2 ',event);
+           });
+
+           document.getElementById      ("outer").addEventListener    ("click",(event)=>{
+               console.log('Outer click ',event);
+           });
+
+           document.getElementById("container").addEventListener("click",(event)=>{
+               console.log('Container click ',event);
+           });
+     </script>
+</html>

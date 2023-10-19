@@ -1,0 +1,24 @@
+<html>
+     <script>
+           function getPromise()
+          {
+          return Promise.reject(4);
+          }
+
+          async function process()
+          {
+          try
+          {
+               let data = await getPromise();//return promise function or inseat of then can use await
+               console.log('Data ',data);
+          }
+          catch(err)
+          {
+               console.log('Err ',err);
+          }
+          
+          }
+          process();
+          console.log("Hello");
+     </script>
+</html>
