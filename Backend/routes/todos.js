@@ -6,11 +6,12 @@ var router = express.Router();
 
 
 router.get('/', todos.getAllTodos);
+router.get('/completed',todos.getAllCompletedToDos);
+router.get('/:id',todos.getTodoById);
 
-router.get('/:toDoId', todos.getToDoWithId);
-
-router.get('/example/a', todos.exampleA);
-router.get('/example/a', todos.exampleANext)
+router.post('/',todos.createTodo);
+router.put('/:id',todos.updateTodo);
+router.delete('/:id',todos.deleteTodo);
 
 
 
