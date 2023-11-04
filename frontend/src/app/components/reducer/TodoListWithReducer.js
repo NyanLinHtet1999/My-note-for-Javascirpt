@@ -2,7 +2,7 @@
 import {useReducer, useState, useEffect, useDebugValue} from "react";
 
 
-//only use ToDoListWithReducerTwo approach
+//only use ToDoListWithReducerTwo approach and here learn cusotm reducer
 let initialState = [];
 
 export function todoReducer(todos, action) {
@@ -72,9 +72,19 @@ function TodoItem(props) {
         </div>);
 }
 
+//custom reducer
+function useCustomReducer(reducer, initialState){
+    const [state, setState]  = useState(initialState);
+    function dispatch(action){
+        let nextState = reducer(state, action);
+        setState(nextState);
+    }
+    return [state, dispatch];
+}
 
 export default function TodoListWithReducer(){
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
+    // const [todos, dispatch] = useReducer(todoReducer, initialState);
+    const [todos, dispatch] = useCustomReducer(todoReducer, initialState);
     const [editToDo, setEditToDo] = useState(null);
     function editHandler(todo){
         setEditToDo(todo)

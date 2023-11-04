@@ -1,6 +1,7 @@
 import Image from 'next/image'
 //import styles from './page.module.css'
-// import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
+// import bootstrap from 'bootstrap' 
 
 import HelloWorld,{Another} from "./components/HelloWorld";
 import JsxExample from "./components/JsxExample";
@@ -20,13 +21,12 @@ import CounterReducer from "./components/reducer/CounterReducer";
 import TodoListWithReducer from "./components/reducer/TodoListWithReducer";
 import ToDoListWithReducerTwo, {TodoInput} from "./components/reducer/ToDoListWithReducerTwo";
 import ReuseComponent from "./components/reducer/ReuseComponent";
-/*
 import ContextDemo from "./components/context/ContextDemo";
-import ScalingWithContext from "./components/context/ScalingWithContext";
+// import ScalingWithContext from "./components/context/ScalingWithContext";
 import FormDemo from "./components/form/FormDemo";
 import BasicForm from "./components/form/BasicForm";
-import RenderProperty from "./components/pattern/RenderProperty";
-import AnotherBasicForm from "./components/form/AnotherBasicForm";
+import RenderProperty from './components/pattern/RenderProperty';
+import AnotherBasicForm from './components/form/AnotherBasicForm';
 import {ValidationSchemaExample} from "./components/form/ValidationSchemaExample";
 import OurFormik,{InputField} from "./components/form/OurFormik";
 import CustomFormikExample from "./components/form/CustomFormikExample";
@@ -37,6 +37,7 @@ import DatePicker from "./components/DatePicker";
 import EffectDemo from "./components/hook/EffectDemo";
 import TodoWithEffect from "./components/hook/TodoWithEffect";
 import EffectDependency from "./components/hook/EffectDependency";
+/*
 import OldSchool from "./components/class_component/OldSchool";
 import HookDemo from "./components/hook/HookDemo";
 import Unique from "./components/hook/Unique";
@@ -60,14 +61,14 @@ import RenderContainer from "./components/pattern/render_property/RenderContaine
 import RenderPropertyDemo from "./components/pattern/render_property/RenderPropertyDemo";
 */
 import Test from "./components/Test";
+
 export default function Home() {
     const items = ["one","two","three"];
 
   return (
     <main >
       <div >
-        <ToDoListWithReducerTwo/>
-        <ReuseComponent/>
+        <EffectDependency/>
       </div>
     </main>
   )
