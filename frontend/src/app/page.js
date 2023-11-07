@@ -24,12 +24,12 @@ import ReuseComponent from "./components/reducer/ReuseComponent";
 import ContextDemo from "./components/context/ContextDemo";
 // import ScalingWithContext from "./components/context/ScalingWithContext";
 import FormDemo from "./components/form/FormDemo";
-import BasicForm from "./components/form/BasicForm";
-import RenderProperty from './components/pattern/RenderProperty';
-import AnotherBasicForm from './components/form/AnotherBasicForm';
-import {ValidationSchemaExample} from "./components/form/ValidationSchemaExample";
-import OurFormik,{InputField} from "./components/form/OurFormik";
-import CustomFormikExample from "./components/form/CustomFormikExample";
+// import BasicForm from "./components/form/BasicForm";
+// import RenderProperty from './components/pattern/RenderProperty';
+// import AnotherBasicForm from './components/form/AnotherBasicForm';
+// import {ValidationSchemaExample} from "./components/form/ValidationSchemaExample";
+// import OurFormik,{InputField} from "./components/form/OurFormik";
+// import CustomFormikExample from "./components/form/CustomFormikExample";
 import CounterWithRef from "./components/CounterWithRef";
 import Stopwatch from "./components/StopWatch";
 import ControlDOM from "./components/ControlDOM";
@@ -37,10 +37,10 @@ import DatePicker from "./components/DatePicker";
 import EffectDemo from "./components/hook/EffectDemo";
 import TodoWithEffect from "./components/hook/TodoWithEffect";
 import EffectDependency from "./components/hook/EffectDependency";
-/*
 import OldSchool from "./components/class_component/OldSchool";
 import HookDemo from "./components/hook/HookDemo";
 import Unique from "./components/hook/Unique";
+/*
 import CallBackHookDemo from "./components/hook/CallBackHookDemo";
 import DeferedComponent from "./components/hook/DeferedComponent";
 import MemoHookDemo from "./components/hook/MemoHookDemo";
@@ -68,7 +68,7 @@ export default function Home() {
   return (
     <main >
       <div >
-        <EffectDependency/>
+        <Unique/>
       </div>
     </main>
   )

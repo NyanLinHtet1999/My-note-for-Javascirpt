@@ -19,13 +19,25 @@
 // }
 
 
-export default function Profile({isAdmin}){
+// export default function Profile({isAdmin}){
+//    if(isAdmin){
+//       return (<>
+//          It is admin
+//       </>)
+//    }else {
+//       return (<>
+//          It is user
+//       </>)
+//    }
+// }
+
+export default function Profile ({isAdmin}){
    if(isAdmin){
-      return (<>
-         It is admin
+      return(<>
+         It is Admin
       </>)
    }else {
-      return (<>
+      return(<>
          It is user
       </>)
    }

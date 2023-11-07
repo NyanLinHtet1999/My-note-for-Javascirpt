@@ -12,12 +12,13 @@ export default function ListDynamic(){
     const add = () => setItems([...items, `Hello ${result()}` ]);
     return (
         <div>
+             <button type="button" onClick={add}>Add</button>
             <ul>
             {
                 items.map((item, index) => <li key={index}>{item}</li>)
             }
             </ul>
-            <button type="button" onClick={add}>Add</button>
+           
         </div>
     )
 }
