@@ -1,55 +1,31 @@
 "use client";
 import {Component} from "react";
 
-// class ChildTwo extends Component
-// {
-//     render()
-//     {
-//         return (<div>
-//             Child Two
-//         </div>);
-//     }
-// }
-// function Child()
-// {
-//     return (<div>
-//         Child
-//         <ChildTwo/>
-//     </div>);
-// }
-
-// export default class OldSchool extends Component
-// {
-//     render()
-//     {
-//         return(<div>
-//             Class component
-//             <Child/>
-//         </div>);
-//     }
-// }
-
-class Child2 extends Component{
-    render(){
-        return (<>
-            Child2
-        </>)
+class ChildTwo extends Component
+{
+    render()
+    {
+        return (<div>
+            Child Two
+        </div>);
     }
 }
-
-function Child(){
-    return (<>
-        Child 
-    </>)
+function Child()
+{
+    return (<div>
+        Child
+        <ChildTwo/>
+    </div>);
 }
 
 export default class OldSchool extends Component
 {
-    render(){
-        return (<>
-            class component
+    render()
+    {
+        return(<div>
+            Class component
             <Child/>
-            <Child2/>
-        </>)
+        </div>);
     }
 }
+

@@ -11,6 +11,5 @@ export default function HookDemo()
 {
     return (<div>
         Hook demo
-
     </div>);
 }

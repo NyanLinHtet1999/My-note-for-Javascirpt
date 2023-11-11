@@ -40,7 +40,6 @@ import EffectDependency from "./components/hook/EffectDependency";
 import OldSchool from "./components/class_component/OldSchool";
 import HookDemo from "./components/hook/HookDemo";
 import Unique from "./components/hook/Unique";
-/*
 import CallBackHookDemo from "./components/hook/CallBackHookDemo";
 import DeferedComponent from "./components/hook/DeferedComponent";
 import MemoHookDemo from "./components/hook/MemoHookDemo";
@@ -48,7 +47,8 @@ import ForwardRefDemo from "./components/hook/ForwardRefDemo";
 import ImperativeHandleDemo from "./components/hook/ImperativeHandleDemo";
 import LayoutEffectDemo from "./components/hook/LayoutEffectDemo";
 import PortalDemo from "./components/PortalDemo";
-import TodosApp from "./components/hook/external_storage/TodoApp";
+import UseSyncExample from './UseSynExample';
+// import TodosApp from "./components/hook/external_storage/TodoApp";
 import Welcome from "./components/class_component/Welcome";
 import OldSchoolCounter from "./components/class_component/OldSchoolCounter";
 import UnmountDemo from "./components/class_component/UnmountDemo";
@@ -58,9 +58,11 @@ import ProblemComponent from "./components/ProblemComponent";
 import HocDemo from "./components/pattern/hoc/HocDemo";
 import LoadingHocDemo from "./components/pattern/hoc/LoadingHocDemo";
 import RenderContainer from "./components/pattern/render_property/RenderContainer";
+
 import RenderPropertyDemo from "./components/pattern/render_property/RenderPropertyDemo";
-*/
+
 import Test from "./components/Test";
+
 
 export default function Home() {
     const items = ["one","two","three"];
@@ -68,7 +70,7 @@ export default function Home() {
   return (
     <main >
       <div >
-        <Unique/>
+        <RenderPropertyDemo/>
       </div>
     </main>
   )

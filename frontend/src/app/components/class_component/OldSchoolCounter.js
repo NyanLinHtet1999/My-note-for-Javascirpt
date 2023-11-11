@@ -10,22 +10,11 @@ export default class OldSchoolCounter extends Component
             counter : 0,
             another : 'Something'
         };
-        /*
-        this.state = {
-            another : 'Something'
-        }
-
-         */
-        //let [state,setState]=useState('');
         this.incHandler = this.incHandler.bind(this);
         console.log('OldSchol counter constructor');
     }
     incHandler()
     {
-        console.log('this ',this);
-        this.setState({
-            counter : this.state.counter + 1
-        });
         this.setState({
             counter : this.state.counter + 1
         });

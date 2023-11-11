@@ -1,4 +1,4 @@
-
+"use client"
 function Item(props) {
     return <div>
         <img src={"https://i.imgur.com/7vQD0fPs.jpg"}/><br/>

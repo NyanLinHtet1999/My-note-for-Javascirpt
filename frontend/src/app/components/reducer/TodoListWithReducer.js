@@ -74,6 +74,7 @@ function TodoItem(props) {
 
 //custom reducer
 function useCustomReducer(reducer, initialState){
+    useDebugValue("CustomName");
     const [state, setState]  = useState(initialState);
     function dispatch(action){
         let nextState = reducer(state, action);

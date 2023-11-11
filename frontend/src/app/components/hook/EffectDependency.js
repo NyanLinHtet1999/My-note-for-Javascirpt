@@ -1,5 +1,5 @@
 "use client";
-import {useEffect, useState} from "react";
+import {use, useEffect, useState} from "react";
 
 export default function EffectDependency()
 {
@@ -43,4 +43,5 @@ export default function EffectDependency()
         </button>
     </div>);
 }
+
 
