@@ -1,6 +1,6 @@
 /* Instruments */
 import { counterSlice } from './slices'
-import { todoSlice } from './slices/todoSlice'
+import { todoSlice } from './slices'
 
 
 export const reducer = {

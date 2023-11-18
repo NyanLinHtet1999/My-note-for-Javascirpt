@@ -1,26 +1,118 @@
 'use client'
 
 /* Core */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /* Instruments */
 import {
-  todoSlice,
+
   useSelector,
   useDispatch,
   selectTodo,
-  incrementAsync,
-  incrementIfOddAsync,
+  todoSlice,
+  loadAllTodo,
 } from '@/lib/redux'
-
-export default function TodoWithRedux () {
-     const todos = useSelector(selectTodo)
-     return (<div>
-          Todo with redux
-          {
-               todos.map(todo => <div key ={todo.id}>
-                    {todo.title}
-               </div>)
+import Todo from "@/lib/redux/slices/todoSlice/Todo";
+// import { deleteToDo } from '@/lib/redux/slices/todoSlice/thunks';
+let id = 3;
+function TodoInput(props : {
+     addToDo : (todo : Todo) => void
+}) {
+     let [todoInput, setTodoInput] = useState("");
+     const btnAddHandler = () => {
+          console.log(todoInput);
+          let todo = {
+               id : (id++)+ "",
+               title : todoInput,
+               completed : false
           }
+          props.addToDo(todo);
+          setTodoInput("");
+     }    
+
+     return (<div>
+          <input className='form-control'
+                 type="text"
+                 value={todoInput}
+                 onChange={e => setTodoInput(e.target.value)}/>
+          <button className ="btn btn-primary" 
+                  onClick={btnAddHandler}>
+               Add
+          </button>
      </div>)
+}
+
+function TodoUI(props : {
+     todo : Todo,
+     deleteTodo :   (todo : Todo) => void,
+     updateTodo : (todo : Todo) => void       
+      })
+     
+{
+     const [editMode, setEditMode] = useState(false);
+     const [todoTitle, setTodoTitle] = useState(props.todo.title)
+     let {todo} = props;
+     const btnDeleteHandler = () => {
+          props.deleteTodo(todo);
+     }   
+     const btnEditHandler = () => {
+          if(editMode){
+               console.log(editMode);
+               let updateTodo = {
+                    ...props.todo,
+                    title : todoTitle
+               };
+               // console.log(updateTodo);
+               props.updateTodo(updateTodo);
+          }
+  
+          setEditMode(!editMode);
+          
+     }   
+     return (<div className='mt-2 '>
+          
+               {
+                    !editMode ?
+                         todo.title :
+                         <input type="text" value ={todoTitle} 
+                              onChange={e => setTodoTitle(e.target.value)}/>
+               }
+              
+
+          &nbsp;
+          <button type="button" 
+                    className="btn btn-sm btn-primary"
+                    onClick={btnEditHandler}>
+                       {editMode ? "Update" : "Edit"}  
+          </button>
+          &nbsp;
+          <button type="button" 
+                    className="btn btn-sm btn-danger"
+                    onClick={btnDeleteHandler}>
+                         Delete
+          </button>
+     </div>)
+}
+
+export default function TodoWithRedux() {
+     const dispatch = useDispatch();
+  const todos = useSelector(selectTodo);
+  useEffect(() => {
+     console.log("call api");
+     dispatch(loadAllTodo()).unwrap().then(data => console.log("The data is" , data))
+  }, [])
+ 
+  const addTodoHandler = (todo : Todo) => {
+     dispatch(todoSlice.actions.addTodo(todo));
+  }
+  const deleteTodoHandler = (todo : Todo) => {
+     dispatch(todoSlice.actions.deleteTodo(todo));
+  }
+  const updateTodoHandler = (todo : Todo) => {
+     dispatch(todoSlice.actions.updateTodo(todo));
+  }
+     return (<>
+          <TodoInput addToDo= {addTodoHandler}/>
+          {todos.map((todo) => <TodoUI key={todo.id} todo={todo} deleteTodo = {deleteTodoHandler} updateTodo = {updateTodoHandler}/>)}
+     </>)
 }
