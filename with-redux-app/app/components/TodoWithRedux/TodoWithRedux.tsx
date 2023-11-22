@@ -13,6 +13,7 @@ import {
   loadAllTodo,
 } from '@/lib/redux'
 import Todo from "@/lib/redux/slices/todoSlice/Todo";
+import { useRouter } from 'next/navigation';
 // import { deleteToDo } from '@/lib/redux/slices/todoSlice/thunks';
 let id = 3;
 function TodoInput(props : {
@@ -69,6 +70,12 @@ function TodoUI(props : {
           setEditMode(!editMode);
           
      }   
+     const router = useRouter();
+     const btnDetailHandler = () => {
+         console.log("id", id);
+     //     console.log(router);
+         router.push(`todo/${id}`)
+     }
      return (<div className='mt-2 '>
           
                {
@@ -91,6 +98,12 @@ function TodoUI(props : {
                     onClick={btnDeleteHandler}>
                          Delete
           </button>
+          &nbsp;
+          <button type="button" 
+                    className="btn btn-sm btn-success"
+                    onClick={btnDetailHandler}>
+                         Detail
+          </button>
      </div>)
 }
 
@@ -101,6 +114,11 @@ export default function TodoWithRedux() {
      console.log("call api");
      dispatch(loadAllTodo()).unwrap().then(data => console.log("The data is" , data))
   }, [])
+//   useEffect(() => {
+//      fetch("http://localhost:3000/api/todos")
+//           .then(response => response.json() )
+//           .then(data => console.log("Data from express", data))
+//   })
  
   const addTodoHandler = (todo : Todo) => {
      dispatch(todoSlice.actions.addTodo(todo));

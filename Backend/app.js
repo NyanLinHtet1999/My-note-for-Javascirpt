@@ -13,6 +13,7 @@ var toDosRouter = require('./routes/todos');
 let movieRouter = require('./routes/movies');
 let reviewRouter = require('./routes/reviews');
 let userRouter = require('./routes/users');
+var cors = require('cors');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(logMiddleware.log);
 app.use(logMiddleware.auth);
+app.use(cors());
 
 mongoose.connect(db, {
   useNewUrlParser: true,
@@ -39,7 +41,7 @@ app.use('/', indexRouter);
 app.use('/api/users', userRouter);
 app.use('/api/custom', customRouter);
 app.use('/api/todos', toDosRouter);
-app.use('/api/movies',auth.verifyUserToken, movieRouter);
+app.use('/api/movies', movieRouter);
 app.use('/api/reviews', auth.verifyUserToken,reviewRouter);
 app.use('/api/movies', movieRouter);
 app.use('/api/reviews',reviewRouter);

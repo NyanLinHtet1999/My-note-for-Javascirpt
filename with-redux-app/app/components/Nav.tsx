@@ -9,7 +9,7 @@ import styles from '../styles/layout.module.css'
 
 export const Nav = () => {
   const pathname = usePathname()
-
+  console.log("Pathname ", pathname);
   return (
     <nav className={styles.nav}>
       <Link
@@ -25,6 +25,12 @@ export const Nav = () => {
         href="/verify"
       >
         Verify
+      </Link>
+      <Link
+        className={`${styles.link} ${pathname === '/main/dashboard' ? styles.active : ''}`}
+        href="/main/dashboard"
+      >
+        Dashboard
       </Link>
     </nav>
   )

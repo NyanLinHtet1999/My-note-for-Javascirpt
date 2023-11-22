@@ -5,6 +5,7 @@ import TodoList from './components/Todo/TodoList'
 import TodoWithRedux from './components/TodoWithRedux/TodoWithRedux'
 
 export default function IndexPage() {
+  // throw new Error("Got some error")
   return (<div>
       {/* <Counter /> */}
     {/* <TodoList/> */}
