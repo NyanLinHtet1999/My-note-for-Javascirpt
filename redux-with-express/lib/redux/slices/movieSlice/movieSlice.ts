@@ -23,6 +23,9 @@ const initialState : MovieSliceState =  {
       addMovie: (state, action: PayloadAction<Movie>) => {
         state.movies.push(action.payload)
       },
+      editMovie: (state, action: PayloadAction<Movie>) => {
+        state.movies  = state.movies.map(movie => movie._id === action.payload._id ? action.payload : movie)
+      },
      },
     //  extraReducers: (builder) => {
     //   builder

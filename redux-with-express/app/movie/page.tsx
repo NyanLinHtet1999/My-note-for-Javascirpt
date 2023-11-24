@@ -4,16 +4,20 @@ import MovieList from "../components/Movie/MovieList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllMovie } from "@/lib/redux/slices/movieSlice/movieApi";
-import { getAllMovieAsync, saveMovieAsync } from "@/lib/redux/slices/movieSlice/thunks";
+import { getAllMovieAsync, saveMovieAsync , updateMovieAsync } from "@/lib/redux/slices/movieSlice/thunks";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import Movie from "@/lib/redux/slices/movieSlice/Movie";
+// import NewOrUpdateMovieModal from './../../../../TuringReact6thBatch/redux-with-express/app/movie/NewOrUpdateMovieModal';
 
-function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
-    let dispatch = useDispatch()
+function NewOrUpdateMovieModal(props : {show : boolean,
+  handleClose : () => void , 
+  movieToUpdate ?: Movie }) {
+    let dispatch = useDispatch();
+    let {movieToUpdate} = props;
      const movieSchema = Yup.object().shape({
           title: Yup.string()
             .min(2, 'Too Short!')
@@ -30,16 +34,14 @@ function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
   return (
     <Modal show={props.show} onHide={props.handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>New Movie</Modal.Title>
+        <Modal.Title>{props.movieToUpdate ? "Update Movie" : "New Movie"}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        
-   
           <Formik
       initialValues={{
-        title: '',
-        year: '',
-        director: '',
+        title: movieToUpdate ? movieToUpdate.title : "",
+        year: movieToUpdate ? movieToUpdate.year : "",
+        director: movieToUpdate ? movieToUpdate.director.name : "",
       }}
       validationSchema={movieSchema}
       onSubmit={async (values) => {
@@ -52,8 +54,22 @@ function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
           year : values.year,
           director : director
         }
-        dispatch(saveMovieAsync(movie)).unwrap()
+        if(movieToUpdate) {
+          console.log("movieToUpdate" , movieToUpdate);
+          let updatedMovie = {
+            ...movieToUpdate,
+            title : movie.title,
+            year : movie.year,
+            director : director
+          }
+          console.log("updatedMovie", updatedMovie);
+          dispatch(updateMovieAsync(updatedMovie)).unwrap()
+                                          .then(result => props.handleClose());
+        }else {
+          dispatch(saveMovieAsync(movie)).unwrap()
                                        .then(result => props.handleClose());
+        }
+        
       }}
     >
          {({ errors, touched }) => (
@@ -83,7 +99,9 @@ function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
 
         
         <Modal.Footer>
-        <button type="submit" className="btn btn-primary mt-2">Submit</button>
+        <button type="submit" className="btn btn-primary mt-2">
+          {movieToUpdate ? "Edit" : "Submit"}
+        </button>
         <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>
@@ -109,20 +127,33 @@ export default function MoviePage() {
     dispatch(getAllMovieAsync());
   }, []);
   const [show, setShow] = useState(false);
+  const [movieToUpdate, setMovieToUpdate]  = useState(null);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+
+
+  const editHandler = (movie : Movie) => {
+    console.log("editing", movie);
+    setMovieToUpdate(movie);
+    handleShow();
+  }
+  const newBtnHandler = () =>{
+    setMovieToUpdate(null);
+    handleShow();
+  }
   return (
     <>
       {/* <button type={"button"} className ={"btn btn-primary mb-2 "}>
           New Movie
      </button> */}
-      <Button variant="primary" onClick={handleShow} className={"mb-2"}>
+      <Button variant="primary" onClick={newBtnHandler} className={"mb-2"}>
         New Movie
       </Button>
 
-      <MovieList movies={movies} />
+      <MovieList movies={movies} editHandler = {editHandler} movieToUpdate = {movieToUpdate}/>
 
-      <NewMovieModal show={show} handleClose={handleClose}></NewMovieModal>
+      <NewOrUpdateMovieModal show={show} handleClose={handleClose} movieToUpdate = {movieToUpdate}></NewOrUpdateMovieModal>
     </>
   );
 }
