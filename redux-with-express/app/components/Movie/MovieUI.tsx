@@ -6,8 +6,7 @@ import { useRouter } from "next/navigation";
 export default function MovieUI(props: {movie : Movie}) {
      let {movie} = props;
      let route = useRouter();
-     const movieBtnHandler = () => {
-
+     const movieDetailBtnHandler = () => {
           route.push(`/movie/${movie._id}`)
      }
   return (
@@ -17,8 +16,11 @@ export default function MovieUI(props: {movie : Movie}) {
       <div>{movie.year}</div>
       <div>
           <button type={"button"} 
-                  className="btn btn-primary btn-sm"
-                  onClick={movieBtnHandler} >Detail</button>
+                  className="btn btn-primary btn-sm "
+                  onClick={movieDetailBtnHandler} >Detail</button>
+          {/* <button type={"button"} 
+                  className="btn btn-success btn-sm "
+                  onClick={movieDetailBtnHandler} >Edit</button> */}
       </div>
     </div>
   );

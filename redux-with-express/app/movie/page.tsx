@@ -4,22 +4,22 @@ import MovieList from "../components/Movie/MovieList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllMovie } from "@/lib/redux/slices/movieSlice/movieApi";
-import { getAllMovieAsync } from "@/lib/redux/slices/movieSlice/thunks";
+import { getAllMovieAsync, saveMovieAsync } from "@/lib/redux/slices/movieSlice/thunks";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
+import Movie from "@/lib/redux/slices/movieSlice/Movie";
 
 function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
+    let dispatch = useDispatch()
      const movieSchema = Yup.object().shape({
           title: Yup.string()
             .min(2, 'Too Short!')
             .max(50, 'Too Long!')
             .required('Required'),
-          year: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
+          year: Yup.number()
             .required('Required'),
           director: Yup.string()
             .min(2, 'Too Short!')
@@ -33,69 +33,70 @@ function NewMovieModal(props : {show : boolean,handleClose : () => void }) {
         <Modal.Title>New Movie</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-      <Formik
-       initialValues={{
-         title: '',
-         year: '',
-         director: '',
-       }}
-       validationSchema={movieSchema}
-       onSubmit={values => {
-         // same shape as initial values
-         console.log(values);
-       }}
-     >
-            {({ errors, touched }) => (
-        <form>
-          
-          <div className="mb-3">
-            <label htmlFor="movieTitle" className="form-label">
-               Title
-            </label>
-            <Field name="title"  
-                      className="form-control"
-                      placeholder="Enter movie title"/>
-           {errors.title && touched.title ? (
+        
+   
+          <Formik
+      initialValues={{
+        title: '',
+        year: '',
+        director: '',
+      }}
+      validationSchema={movieSchema}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500));
+        let director = {
+          name : values.director,
+        }
+        let movie:Movie = {
+          title : values.title,
+          year : values.year,
+          director : director
+        }
+        dispatch(saveMovieAsync(movie)).unwrap()
+                                       .then(result => props.handleClose());
+      }}
+    >
+         {({ errors, touched }) => (
+      <Form>
+        <label htmlFor="title" className="form-label">Title</label>
+        <Field id="title" name="title" placeholder="Enter Title" className="form-control"/>
+        {errors.title && touched.title ? (
              <div className=" text-danger">{errors.title}</div>
            ) : null}
-          </div>
 
-          <div className="mb-3">
-            <label htmlFor="movieYear" className="form-label">
-              Year
-            </label>
-             <Field name="year"  
-                      className="form-control"
-                      placeholder="Enter movie year"/>
-            {errors.year && touched.year ? (
+        <label htmlFor="year" className="form-label">Year</label>
+        <Field id="year" name="year" placeholder="Enter Year" className="form-control"/>
+        {errors.year && touched.year ? (
              <div className=" text-danger">{errors.year}</div>
            ) : null}
-          </div>
 
-          <div className="mb-3">
-            <label htmlFor="movieDirector" className="form-label">
-              Director
-            </label>
-             <Field name="director"  
-                      className="form-control"
-                      placeholder="Enter movie director"/>
-              {errors.director && touched.director ? (
+        <label htmlFor="director" className="form-label">Director</label>
+        <Field
+          id="director"
+          name="director"
+          placeholder="Enter Director"
+          className="form-control"
+        />
+        {errors.director && touched.director ? (
              <div className=" text-danger">{errors.director}</div>
            ) : null}
-          </div>
 
-        </form>
-          )}
-        </Formik>
-      </Modal.Body>
-      <Modal.Footer>
+        
+        <Modal.Footer>
+        <button type="submit" className="btn btn-primary mt-2">Submit</button>
         <Button variant="secondary" onClick={props.handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={props.handleClose}>
+        {/* <Button variant="primary" onClick={props.handleClose}>
           Save Changes
-        </Button>
+        </Button> */}
       </Modal.Footer>
+      </Form>
+         )}
+    </Formik>
+        
+      </Modal.Body>
+    
     </Modal>
   );
 }

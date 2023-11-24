@@ -20,6 +20,9 @@ const initialState : MovieSliceState =  {
       loadAllMovie: (state, action: PayloadAction<Movie[]>) => {
         state.movies = action.payload
       },
+      addMovie: (state, action: PayloadAction<Movie>) => {
+        state.movies.push(action.payload)
+      },
      },
     //  extraReducers: (builder) => {
     //   builder
