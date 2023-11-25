@@ -42,7 +42,8 @@ app.use('/api/users', userRouter);
 app.use('/api/custom', customRouter);
 app.use('/api/todos', toDosRouter);
 app.use('/api/movies', movieRouter);
-app.use('/api/reviews', auth.verifyUserToken,reviewRouter);
+// app.use('/api/reviews', auth.verifyUserToken,reviewRouter);
+app.use('/api/reviews',reviewRouter);
 app.use('/api/movies', movieRouter);
 app.use('/api/reviews',reviewRouter);
 

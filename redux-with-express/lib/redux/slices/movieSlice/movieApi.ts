@@ -18,9 +18,13 @@ export const saveMovie = async (movie : Movie)=>{
 }
 
 export const updateMovie = async (movie : Movie)=>{
-    console.log("movie in api", movie);
     const result = await axios.put(API+`/${movie._id}`,movie);
-    console.log('Update result ',result);
+    const movies = await  result;
+    return movies;
+}
+
+export const deleteMovie = async (movie : Movie)=>{
+    const result = await axios.delete(API+`/${movie._id}`);
     const movies = await  result;
     return movies;
 }

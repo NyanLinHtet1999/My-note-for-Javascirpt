@@ -5,3 +5,10 @@
      margin-bottom: 10px;
      min-width: 200px;
 }
+.reviewContainer {
+     padding : 10px;
+     border: 1px solid gray;
+     border-radius: 10px;
+     margin-bottom: 10px;
+     min-width: 200px;
+}

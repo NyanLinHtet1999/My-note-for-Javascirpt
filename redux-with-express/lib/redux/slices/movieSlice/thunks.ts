@@ -33,10 +33,20 @@ export const getAllMovieAsync = createAppAsyncThunk(
   export const updateMovieAsync = createAppAsyncThunk(
     'counter/updateMovieAsync',
     async (movie : Movie, thankApi) => {
-    
       const response = await updateMovie(movie);
       console.log("response", response);
      thankApi.dispatch(movieSlice.actions.editMovie(response.data)) 
+    //  console.log(response.data)
+      return response
+    }
+  )
+
+  export const deleteMovieAsync = createAppAsyncThunk(
+    'counter/deleteMovieAsync',
+    async (movie : Movie, thankApi) => {
+      const response = await updateMovie(movie);
+      console.log("response", response);
+     thankApi.dispatch(movieSlice.actions.deleteMovie(response.data)) 
     //  console.log(response.data)
       return response
     }
