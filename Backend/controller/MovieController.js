@@ -60,7 +60,7 @@ const findMovieByTitle = async function (req,res,next)
 
 const newMovie = async function(req,res,next)
 {
-    console.log("new movie ",req.value);
+    console.log("new movie ",req.body);
     try {
         const movie = await movieService.newMovie(req.body);
         if(!movie) throw Error('Cannot save movie');

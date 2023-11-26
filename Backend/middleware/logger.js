@@ -1,6 +1,7 @@
-function log(req, res , next){
-     console.log("Logger 1");
-     next();
+function log(req,res,next)
+{
+    console.log('Logger 1 ',req.path);
+    next();
 }
 function auth(req,res,next)
 {
@@ -23,6 +24,6 @@ function auth(req,res,next)
 
 }
 module.exports = {
-     log,
-     auth,
-}
+    log,
+    auth,
+};

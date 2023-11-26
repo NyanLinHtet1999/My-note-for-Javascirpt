@@ -30,8 +30,14 @@ export const reviewSlice = createSlice({
       loadAllReviewByMovie : (state, action: PayloadAction<Review[]>) => {
         state.reviews = action.payload
       },
-      saveMovieAction : (state, action: PayloadAction<Review>) => {
+      saveReviewAction : (state, action: PayloadAction<Review>) => {
         state.reviews.push(action.payload)
+      },
+      editReview: (state, action: PayloadAction<Review>) => {
+        state.reviews  = state.reviews.map(review => review._id === action.payload._id ? action.payload : review)
+      },
+      deleteReview: (state, action: PayloadAction<Review>) => {
+        state.reviews  = state.reviews.filter(review => review._id !== action.payload._id)
       },
   },
 })

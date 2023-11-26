@@ -1,5 +1,4 @@
-let todoService = require('../service/TodoService');
-
+const todoService = require('./../service/TodoService');
 async function getAllTodos(req,res,next)
 {
 
@@ -7,7 +6,6 @@ async function getAllTodos(req,res,next)
     //console.log('getAlltodos ',todos);
     return res.json(todos);
 }
-
 async function  getTodoById(req,res,next)
 {
     let todoId = req.params['id'];
@@ -32,14 +30,12 @@ async function  getTodoById(req,res,next)
         });
     }
 }
-
 async function getAllCompletedToDos(req, res, next) {
-    // console.log('ToDo Routers');
+    //console.log('ToDo Routers');
     let todos = await todoService.getAllCompletedToDos();
-    // console.log('All todo from db ',todos);
+    //console.log('All todo from db ',todos);
     res.json(todos);
 };
-
 async function createTodo(req, res, next) {
     console.log('ToDo Routers post ',req.body);
     try {
@@ -54,7 +50,6 @@ async function createTodo(req, res, next) {
     }
 
 }
-
 async function updateTodo(req, res, next) {
 
     try {
@@ -88,11 +83,10 @@ async function deleteTodo(req, res, next) {
 
 }
 module.exports = {
-     getAllTodos,
-     getTodoById,
-     getAllCompletedToDos,
-     createTodo,
-     updateTodo,
-     deleteTodo
-     
- };
+    getAllTodos,
+    getTodoById,
+    createTodo,
+    updateTodo,
+    deleteTodo,
+    getAllCompletedToDos,
+};

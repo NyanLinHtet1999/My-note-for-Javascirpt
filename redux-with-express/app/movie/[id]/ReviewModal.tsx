@@ -1,37 +1,47 @@
 import { useDispatch } from "react-redux";
 import * as Yup from 'yup';
 import Movie from "@/lib/redux/slices/movieSlice/Movie";
+import Review from "@/lib/redux/slices/reviewSlice/Review";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Form, Field } from 'formik';
 import Button from "react-bootstrap/Button";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css' 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { saveReviewAsync } from "@/lib/redux/slices/reviewSlice/thunks";
-import { saveReviewAsync } from "@/lib/redux";
+import { saveReviewAsync , updateReviewAsync} from "@/lib/redux";
 
 export default function NewOrUpdateReviewModal(props : {show : boolean,
      handleClose : () => void , 
-     movieId : String }) {
+     movieId : String ,
+     reviewToUpdate ?: Review}) {
        let dispatch = useDispatch();
-       const [rating, setRating] = useState(0)
-     //   let {movieToUpdate} = props;
+       let {reviewToUpdate} = props;
+       const [rating, setRating] = useState(0);
+       useEffect(() =>{
+          if(reviewToUpdate) {
+            setRating(reviewToUpdate.rating)
+          }else {
+            setRating(0)
+          }
+       }, [reviewToUpdate])
         const reviewSchema = Yup.object().shape({
              review: Yup.string()
                .min(2, 'Too Short!')
                .max(50, 'Too Long!')
                .required('Required'),  
            });
+           console.log("reviewToUpdate", reviewToUpdate)
      return (
        <Modal show={props.show} onHide={props.handleClose}>
          <Modal.Header closeButton>
-           <Modal.Title>Review Movie</Modal.Title>
+           <Modal.Title>{reviewToUpdate ? "Update Review" : "Add Review" }</Modal.Title>
          </Modal.Header>
          <Modal.Body>
 
              <Formik
          initialValues={{
-           review:  "",
+           review:  reviewToUpdate ? reviewToUpdate.review : "",
          }}
          validationSchema={reviewSchema}
          onSubmit={async (values) => {
@@ -41,9 +51,19 @@ export default function NewOrUpdateReviewModal(props : {show : boolean,
              rating : rating,
              movie : props.movieId
            }
-           console.log(review);
-           dispatch(saveReviewAsync(review)).unwrap()
+           if(reviewToUpdate) {
+            let updatedReview = {
+              ...reviewToUpdate,
+              review : values.review,
+              rating : rating,
+              movie : props.movieId
+            }
+            dispatch(updateReviewAsync(updatedReview)).unwrap()
+                                            .then(result => props.handleClose());
+          }else {
+            dispatch(saveReviewAsync(review)).unwrap()
                                           .then(result => props.handleClose());
+          }
            
          }}
        >
@@ -57,7 +77,7 @@ export default function NewOrUpdateReviewModal(props : {show : boolean,
 
           {/* <Rating style={{ maxWidth: 80}} value ={rating}/> */}
           <div className="my-2">
-          <label htmlFor="rating" className="form-label mt-2">Rating</label>
+          <label htmlFor="rating" className="form-label mt-2">Rating {rating}</label>
           <Rating style={{ maxWidth: 80}} value={rating} onChange={setRating}/>
           </div>
 

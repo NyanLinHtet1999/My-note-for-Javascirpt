@@ -9,6 +9,13 @@ async function getToDoById(id)
     console.log('get Todo by id ',todo);
     return todo;
 }
+async function getAllCompletedToDos()
+{
+    let todos = await Todos.find({
+        completed:true
+    });
+    return todos;
+}
 async function saveTodo(todo)
 {
     let newToDo = new Todos(todo);
@@ -24,18 +31,11 @@ async function deleteTodo(todoId)
     let deletedTodo = await Todos.findByIdAndDelete(todoId);
     return deletedTodo;
 }
-async function getAllCompletedToDos()
-{
-    let todos = await Todos.find({
-        completed:true
-    });
-    return todos;
-}
 module.exports = {
     getToDoById,
     getAllToDos,
-    getAllCompletedToDos,
     saveTodo,
     updateTodo,
-    deleteTodo
+    deleteTodo,
+    getAllCompletedToDos,
 }

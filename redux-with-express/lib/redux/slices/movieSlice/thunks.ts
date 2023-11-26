@@ -1,11 +1,12 @@
 import { createAppAsyncThunk } from '@/lib/redux/createAppAsyncThunk'
-import { fetchAllMovie, saveMovie , updateMovie} from './movieApi'
+import { fetchAllMovie, saveMovie , updateMovie , deleteMovie} from './movieApi'
 // import { selectCount } from './selectors'
 // import { counterSlice } from './counterSlice'
 import type { ReduxThunkAction } from '@/lib/redux'
 import { movieSlice } from '@/lib/redux';
 import { reducer } from '../../rootReducer';
 import Movie from './Movie';
+
 
 
 export const getAllMovieAsync = createAppAsyncThunk(
@@ -44,7 +45,7 @@ export const getAllMovieAsync = createAppAsyncThunk(
   export const deleteMovieAsync = createAppAsyncThunk(
     'counter/deleteMovieAsync',
     async (movie : Movie, thankApi) => {
-      const response = await updateMovie(movie);
+      const response = await deleteMovie(movie);
       console.log("response", response);
      thankApi.dispatch(movieSlice.actions.deleteMovie(response.data)) 
     //  console.log(response.data)

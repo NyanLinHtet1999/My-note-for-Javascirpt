@@ -48,14 +48,12 @@ export default function NewOrUpdateMovieModal(props : {show : boolean,
              director : director
            }
            if(movieToUpdate) {
-             console.log("movieToUpdate" , movieToUpdate);
              let updatedMovie = {
                ...movieToUpdate,
                title : movie.title,
                year : movie.year,
                director : director
              }
-             console.log("updatedMovie", updatedMovie);
              dispatch(updateMovieAsync(updatedMovie)).unwrap()
                                              .then(result => props.handleClose());
            }else {

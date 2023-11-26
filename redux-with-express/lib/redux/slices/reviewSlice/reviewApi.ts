@@ -11,8 +11,20 @@ export const loadAllReviewById = async (movieId : string)=>{
     return reviews;
 }
 
-export const saveMovie = async (review : Review)=>{
+export const saveReview= async (review : Review)=>{
     const result = await axios.post(API, review );
     const reviews = await result;
     return reviews;
+}
+
+export const updateReview = async (review : Review)=>{
+    const result = await axios.put(API+`/${review._id}`,review);
+    const reviews = await  result;
+    return reviews;
+}
+
+export const deleteReview = async (review : Review)=>{
+    const result = await axios.delete(API+`/${review._id}`);
+    const movies = await  result;
+    return movies;
 }
